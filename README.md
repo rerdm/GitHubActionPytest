@@ -18,8 +18,13 @@ Run all tests                 : <code>pytest -m test/</code> <br>
 Run specific testset          : <code>pytest -m tests/test-name-with-extension</code><br>
 Run specific test in testset  : <br><code>pytest -m tests/test-name-with-extension::test_add</code>
 
-## starting Githubaction Workflow
+## Starting Githubaction Workflow
 
 When you make a change now and you commit and push it to master the action 
 will be triggered.
+
+## Configure email notofication in GitHub
+
+When you want to get Email notification with the results if the test (after pushing) you have to set it up in GitHub the 
+Email adress in : <code>settings/integrations/Email notifications.
 
