@@ -62,5 +62,3 @@ will be triggered.
 
         - name: 🛠️ Run Tests with pytest
           run: python -m pytest tests/test_callculator.py::test_sub
-
-```
