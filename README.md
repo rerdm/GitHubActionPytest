@@ -1,8 +1,21 @@
+
+- [GitHubActionPytest](#GitHubActionPytest)
+  - [Preconditions](#preconditions)
+  - [Test (Local)](#test-local)
+  - [Starting Githubaction & Workflow](#s)
+  - [Configure email notofication in GitHub](#configure-email-notofication-in-github)
+  - [Example of .github/workflows/ci.yaml file](#example-of-githubworkflowsciyaml-file)
+
+<br>
+<hr>
+
+
+
 # GitHubActionPytest
 - In this project a simple pytest will be executed via GitHubActions end send notification via email.
 
 
-# Preconditions
+## Preconditions
 
 1. Install python ( and add to environmnt vars)
 2. Install pytest ( and add to environmnt vars)
@@ -18,7 +31,7 @@
 - Run specific testset          : <code>pytest -m tests/test-name-with-extension</code><br>
 - Run specific test in testset  : <br><code>pytest -m tests/test-name-with-extension::test_add</code>
 
-## Starting Githubaction Workflow
+## Starting Githubaction & Workflow
 
 - When you make a change now and you commit and push it to master the action 
 will be triggered.
