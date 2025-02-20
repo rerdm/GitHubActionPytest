@@ -1,18 +1,21 @@
 
 - [GitHubActionPytest](#GitHubActionPytest)
-  - [Preconditions](#preconditions)
-  - [Test (Local)](#test-local)
-  - [Starting Githubaction & Workflow](#s)
-  - [Configure email notofication in GitHub](#configure-email-notofication-in-github)
-  - [Example of .github/workflows/ci.yaml file](#example-of-githubworkflowsciyaml-file)
+    - [Preconditions](#preconditions)
+    - [Test (Local)](#test-local)
+    - [Starting Githubaction & Workflow](#starting-githubaction--workflow)
+    - [Configure email notification in GitHub](#configure-email-notification-in-github)
+    - [Example of .github/workflows/ci.yaml file](#example-of-githubworkflowsciyaml-file)
+    - [Reporting](#reporting)
 
 <br>
 <hr>
 
 
-
 # GitHubActionPytest
-- In this project a simple pytest will be executed via GitHubActions end send notification via email.
+
+## Project Description
+
+GitHubActionPytest is a project designed to automate the testing of Python code using GitHub Actions and pytest. It provides a continuous integration and continuous deployment (CI/CD) pipeline that runs tests on every push and pull request to the master branch. The project includes configuration for setting up the Python environment, installing dependencies, running tests, and generating test reports. Additionally, it offers guidance on configuring email notifications for test results and ensuring that test files can locate the source files by modifying the Python path.
 
 ## Configuration of Path
 
@@ -52,7 +55,22 @@ will be triggered.
 - When you want to get email notification with the results if the test (after pushing) you have to set it up in GitHub the 
 - Email adress in settings/integrations/Email notifications.
 
-## Example of .github/workflows/ci.yaml file
+
+## Configuration of Path
+
+To ensure that the test files can locate the source files, you need to configure the Python path. This can be done by adding the following code snippet to the top of your test files:
+
+```python
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+```
+
+This code modifies the `sys.path` list to include the `src` directory, allowing the test files to import modules from the source directory. This is necessary because, by default, Python does not include the parent directory of the test files in the module search path.
+
+### GitHub Actions Workflow
+The current GitHub Actions workflow configuration is as follows:
+
 
 ```yaml
 name: Python CI/CD
