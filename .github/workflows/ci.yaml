@@ -32,14 +32,14 @@ jobs:
           PYTHONPATH: src
         run: pytest --html=report.html
 
-      - name: 📄 Upload HTML report
+      - name: 📦 Create report directory
+        run: |
+          mkdir -p report/assets
+          mv report.html report/
+          cp assets/style.css report/assets/
+
+      - name: 📄 Upload HTML report with assets
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: report.html
-
-      - name: 📄 Upload CSS for HTML report
-        uses: actions/upload-artifact@v4
-        with:
-          name: report-css
-          path: assets/style.css
+          path: report
