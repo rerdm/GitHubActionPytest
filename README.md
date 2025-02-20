@@ -54,35 +54,44 @@ will be triggered.
 
 ## Example of .github/workflows/ci.yaml file
 
+```yaml
+name: Python CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-html
+
+      - name: 🛠️ Run Tests with pytest
+        env:
+          PYTHONPATH: src
+        run: pytest -v --capture=tee-sys --html=report.html
+
+      - name: 📄 Upload HTML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: report.html
 ```
-
-    name: Python CI/CD
-
-    on:
-    push:
-        branches:
-        - master
-    pull_request:
-        branches:
-        - master
-
-    jobs:
-    test:
-        runs-on: ubuntu-latest
-
-        steps:
-        - name: 🔄 Checkout Repository
-            uses: actions/checkout@v3
-
-        - name: 🐍 Set up Python
-            uses: actions/setup-python@v4
-            with:
-            python-version: "3.9"
-
-        - name: 📦 Install dependencies
-            run: |
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
-
-        - name: 🛠️ Run Tests with pytest
-          run: python -m pytest tests/test_callculator.py::test_sub
