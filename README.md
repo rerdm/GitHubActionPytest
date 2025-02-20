@@ -87,11 +87,17 @@ jobs:
       - name: 🛠️ Run Tests with pytest
         env:
           PYTHONPATH: src
-        run: pytest -v --capture=tee-sys --html=report.html
+        run: pytest --html=report.html
 
-      - name: 📄 Upload HTML report
-        uses: actions/upload-artifact@v3
+      - name: 📦 Create report directory
+        run: |
+          mkdir -p report/assets
+          mv report.html report/
+          cp assets/style.css report/assets/
+
+      - name: 📄 Upload HTML report with assets
+        uses: actions/upload-artifact@v4
         with:
-          name: test-report
-          path: report.html
+          name: test-report-${{ github.sha }}
+          path: report
 ```
