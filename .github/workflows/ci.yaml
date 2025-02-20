@@ -37,3 +37,9 @@ jobs:
         with:
           name: test-report
           path: report.html
+
+      - name: 📄 Upload CSS for HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-css
+          path: assets/style.css
