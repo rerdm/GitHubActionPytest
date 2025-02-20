@@ -17,18 +17,6 @@
 
 GitHubActionPytest is a project designed to automate the testing of Python code using GitHub Actions and pytest. It provides a continuous integration and continuous deployment (CI/CD) pipeline that runs tests on every push and pull request to the master branch. The project includes configuration for setting up the Python environment, installing dependencies, running tests, and generating test reports. Additionally, it offers guidance on configuring email notifications for test results and ensuring that test files can locate the source files by modifying the Python path.
 
-## Configuration of Path
-
-To ensure that the test files can locate the source files, you need to configure the Python path. This can be done by adding the following code snippet to the top of your test files:
-
-```python
-import os
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-```
-
-This code modifies the `sys.path` list to include the `src` directory, allowing the test files to import modules from the source directory. This is necessary because, by default, Python does not include the parent directory of the test files in the module search path.
-
 ## Preconditions
 
 1. Install python ( and add to environmnt vars)
