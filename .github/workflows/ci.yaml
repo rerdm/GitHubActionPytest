@@ -30,7 +30,7 @@ jobs:
       - name: 🛠️ Run Tests with pytest
         env:
           PYTHONPATH: src
-        run: pytest -v --capture=tee-sys --html=report.html
+        run: pytest --html=report.html
 
       - name: 📄 Upload HTML report
         uses: actions/upload-artifact@v4
