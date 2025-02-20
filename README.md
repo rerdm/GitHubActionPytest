@@ -3,7 +3,8 @@
     - [Preconditions](#preconditions)
     - [Test (Local)](#test-local)
     - [Starting Githubaction & Workflow](#starting-githubaction--workflow)
-    - [Configure email notification in GitHub](#configure-email-notification-in-github)
+    - [Configuration of Path](#configuration-of-path)
+    - [Configure email Notifikation in GitHub](#configure-email-notification-in-github)
     - [Example of .github/workflows/ci.yaml file](#example-of-githubworkflowsciyaml-file)
     - [Reporting](#reporting)
 
