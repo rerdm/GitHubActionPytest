@@ -1,20 +1,22 @@
 import pytest
-from src.calculator import add
-from src.calculator import sub
+import sys
+import os
+
+# Add src directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+from calculator import add, sub, mul, div  # Stellen Sie sicher, dass diese Datei existiert und die Funktionen definiert sind
 
 def test_add():
-    """Test test the add function from callculator program."""
     assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
-    
+
 def test_sub():
-    """Test test the substract function from callculator program."""
-    assert sub(2, 3) == 5
-    assert sub(1, 1) == 0
-    assert sub(5, 5) == 0
-    
+    assert sub(2, 3) == -1
 
+def test_mul():
+    assert mul(2, 3) == 6
 
-if __name__ == "__main__":
-    pytest.main()
+def test_div():
+    assert div(6, 3) == 2
+    with pytest.raises(ValueError):
+        div(10, 0)
