@@ -45,4 +45,10 @@ jobs:
           path: report
 
       - name: 🔗 Create link to HTML report
-        run: echo "Report URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts"
+        run: echo "Report URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" > report-url.txt
+
+      - name: 📄 Upload report URL
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-url
+          path: report-url.txt
